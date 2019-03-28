@@ -1,12 +1,12 @@
 {
     "0": {
-        "name": "Sala",
+        "name": "Corridoio",
         "description": "Questo luogo e' abbastanza accogliente nonostante il senso di claustrofobia che ti trasmette",
         "color": "white"
     },
 
     "1": {
-        "name": "Cucina",
+        "name": "",
         "description": "E' tutto molto disordinato. Sembra che nessuno abbia riordinato da molto tempo",
         "color": "red"
     },
