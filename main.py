@@ -286,7 +286,8 @@ class Room:
 
     def draw(self):
         print(self.name)
-        print(self.description)
+        description = self.description.replace(". ", "\n")
+        print(description)
         for y in range(self.h):
             for x in range(self.w):
                 e = self.get_entity_at_coords(x, y)
