@@ -33,14 +33,21 @@ class Fg:
 
 class Bg: 
     rs="\033[00m"
-    black='\033[40m'
-    red='\033[41m'
-    green='\033[42m'
-    yellow='\033[43m'
-    blue='\033[44m'
-    magenta='\033[45m'
-    cyan='\033[46m'
-    white='\033[47m'
+    black="\033[40m"
+    red="\033[41m"
+    lightred ="\033[101m"
+    green="\033[42m"
+    lightgreen="\033[102m"
+    yellow="\033[43m"
+    blue="\033[44m"
+    lightblue="\033[104m"
+    magenta="\033[45m"
+    lightmagenta="\033[105m"
+    cyan="\033[46m"
+    lightcyan= "\033[106m"
+    grey="\033[107m"
+    lightgrey="\033[100m"
+    white="\033[47m"
 
 
 class Directions:
@@ -51,7 +58,7 @@ class Directions:
 
 
 class Entity:
-    def __init__(self, room, x, y, graphic=None, color=None, name=None, description=None, interactions=None):
+    def __init__(self, room, x, y, graphic=None, color= None, name=None, description=None, interactions=None):
         self.room = room
         self.x = x
         self.y = y
@@ -68,6 +75,11 @@ class Entity:
         self.name = definition["name"]
         self.description = definition["description"]
         self.interactions = definition.get("interactions")
+        if definition.get("dark_color", False):
+            self.dark_color = getattr(Bg, definition["dark_color"])
+        else:
+            self.dark_color = False
+
 
     def interact(self, item=None):
         if self.interactions:
@@ -81,8 +93,19 @@ class Entity:
             if action is not None:
                 player = self.game.player
 
+                if self.game.player.inventory.get("L", False) == False and "other" in action:
+                    print(action["other"])
+                    return
+                
                 if "message" in action:
                     print(action["message"])
+
+                if "pickup" in action:
+                    thing = player.inventory.get(self.graphic, False )
+                    if thing:
+                        return
+                    else: 
+                         player.inventory[self.graphic] = self
 
                 if "transform" in action:
                     transform = action["transform"]
@@ -91,11 +114,16 @@ class Entity:
                     else:
                         self.set(transform, Game.config["entities"][transform])
 
-                if "pickup" in action:
-                    player.inventory[self.graphic] = self
-
                 if item is not None and action.get("remove_from_inventory", False) == True :
                     del player.inventory[item.graphic]
+                
+                if "riddle" in action:
+                    answer = input(action["riddle"]).lower()
+                    if answer != action["answer"]:
+                        print("risposta sbagliata, riprova")
+                        return
+                    else: 
+                        print("bravo, hai risolto l'indovinello")
 
                 if "move_to_room" in action:
                     player.change_room(self.game.rooms[action["move_to_room"]])
@@ -111,12 +139,15 @@ class Entity:
         print(choice(WRONG_INTERACTION_RESPONSES))
 
     def __str__(self):
-        return self.color + " " + self.graphic + " " + Fg.rs + Bg.rs
-
+        if self.dark_color and self.game.player.inventory.get("L", False) == False:
+            return self.dark_color + " " + self.graphic + " "  + Bg.rs
+        else:
+            return self.color + " " + self.graphic + " " + Fg.rs + Bg.rs
 
 class Mobile(Entity):
     def __init__(self, room, x, y, graphic, color):
         Entity.__init__(self, room, x, y, graphic, color)
+        self.dark_color = False
 
     def change_room(self, room):
         from_room_number = self.room.number
@@ -173,6 +204,7 @@ class Player(Mobile):
 class Wall(Entity):
     def __init__(self, room, x, y):
         Entity.__init__(self, room, x, y, " ", Bg.black)
+        self.dark_color = False
 
 
 class Game:
@@ -293,8 +325,11 @@ class Room:
                 e = self.get_entity_at_coords(x, y)
                 if e:
                     print(e, end="")
-                else:
+                elif self.game.player.inventory.get("L", False):
                     print(self.color + "   " + Bg.rs, end="")
+                else:
+                    print(Bg.black + "   " + Bg.rs, end="")
+
             print()
 
 

@@ -1,23 +1,14 @@
 {
-    "L": {
-        "name": "coccinella",
-        "color": "red",
-        "description": "che bella!"
-    },
-    "D": {
-        "name": "idrogeno",
-        "description": "e' dell'idrogeno, non chiedermi come fai a percepirlo...",
-        "color": "magenta"
-    },
-    "P": {
-        "name": "lasagne",
-        "description": "sembrano appetitose",
-        "color": "green"
-    },
-    "T": {
-        "name": "bomba",
-        "description": "e' una bomba pronta a detonare, devo sbrigarmi a disinnescarla!",
-        "color": "red"
+    "0": {
+        "name": "porta",
+        "description": "e' una porta",
+        "color": "blue",
+        "interactions": {
+            "no-item": {
+                "message": "si apre",
+                "move_to_room": 0
+            }
+        }
     },
     "1": {
         "name": "porta",
@@ -35,8 +26,10 @@
         "description": "e' una porta",
         "color": "blue",
         "interactions": {
-            "no-item": {
-                "message": "si apre",
+            "I": {
+                "message": "Questo e' l'indovinello del faraone Sethenes, sei risponderai bene sarai salvo, altrimenti...",
+                "riddle":"Piu' e' presente meno lo vedi. Cos'e' ? ",
+                "answer": "buio",
                 "move_to_room": 2
             }
         }
@@ -52,68 +45,177 @@
             }
         }
     },
-    "0": {
+    "4": {
         "name": "porta",
         "description": "e' una porta",
         "color": "blue",
         "interactions": {
-            "no-item": {
+            "K": {
                 "message": "si apre",
-                "move_to_room": 0
+                "remove_from_inventory": true,
+                "move_to_room": 4
+            }
+        }
+    },
+    "E":{
+        "name": "Acqua",
+        "description": "una vasca d'acqua",
+        "color": "cyan",
+        "interactions": {
+            "L": {
+                "message":"strano che ci sia dell'acqua in una tomba",
+                "remove_from_inventory": true
+            }
+        }
+    },
+
+    "B": {
+        "name": "Baule",
+        "description": "e' un vecchio baule ricoperto di geroglifici",
+        "color": "black",
+        "interactions":{
+            "M":{
+                "message": "non riuscendolo ad aprire, lo rompi con la mazza",
+                "remove_from_inventory":true,
+                "transform": "R"
             }
         }
     },
     "C": {
-        "name": "quadro",
-        "description": "e' proprio un bel quadro",
-        "color": "blue"
+        "name": "Vaso canopo",
+        "description": "che bel vaso!",
+        "color": "green",
+        "interactions": {
+          "M":{
+            "message": "raccogli il vaso e scuotendolo ti accorgi che c'e' qualcosa all'interno. Lo rompi e trovi una pergamena.",
+            "remove_from_inventory": true,
+            "transform": "I"
+            }
+        }
     },
 
-    "B": {
-        "name": "cassaforte",
-        "description": "e' una cassaforte chiusa",
-        "color": "yellow"
-    },
+    "I": {
+        "name": "Pergamena",
+        "description": "vecchia pergamena sbiadita",
+        "color": "lightmagenta",
+        "interactions": {
+          "no-item":{
+            "message": "Raccogli la pergamena, nella quale trovi uno strano indovinello",
+            "transform": " ",
+            "pickup": true
+          }
+        }
 
-    "V": {
-        "name": "Tenaglie",
-        "description": "sono delle tenaglie piuttosto affilate",
-        "color": "green"
-    },
-
-    "P": {
-        "name": "pianta",
-        "description": "questa pianta non viene annaffiata da molto tempo",
-        "color": "green"
-    },
-
-    "C": {
-        "name": "candelabro",
-        "description": "un vecchio candelabro arrugginito",
-        "color": "yellow"
-    },
-
-    "U": {
-        "name": "unicorno",
-        "description": "che splendido esemplare fatato!",
-        "color": "blue"
     },
 
     "K": {
         "name": "chiave",
         "description": "e' una piccola chiave",
-        "color": "yellow"
+        "color": "lightcyan",
+        "interactions": {
+          "no-item":{
+            "message": "Raccogli la chiave",
+            "transform": " ",
+            "pickup": true
+          }
+        }
+    },   
+    "L": {
+        "name": "Torcia",
+        "color": "lightred",
+        "description": "e' una torcia",
+        "interactions": {
+            "no-item": {
+                "message": "grazie a questa riesci a vedere meglio",
+                "transform": " ",
+                "pickup": true
+            }
+        }
     },
 
-    "+": {
-        "name": "interruttore",
-        "description": "e' un interruttore posizionato su ACCESO",
-        "color": "black"
+    "M":{
+        "name": "mazza",
+        "description": " e' molto pericolosa se finisce in testa",
+        "color": "grey",
+        "interactions": {
+            "no-item": {
+                "message": "prendi la mazza, potrebbe servire",
+                "transform": " ",
+                "pickup": true
+            }
+        }
+
+    },
+    "Q": {
+        "name": "Quadro",
+        "description": "e' un quadro molto antico con una strana apertura in mezzo",
+        "color": "lightblue",
+        "interactions": {
+            "R":{
+                "message":"",
+                "remove_from_inventory": true,
+                "transform": "K"
+            }
+        }
     },
 
-    "-": {
-        "name": "interruttore",
-        "description": "e' un interruttore posizionato su SPENTO",
-        "color": "black"
+    "R": {
+        "name": "Pietra preziosa",
+        "description": "che bella pietra",
+        "color": "magenta",
+        "interactions": {
+            "no-item": {
+                "message":" Forse se la prendi ti portera' fortuna",
+                "transform": " ",
+                "pickup": true
+            }
+        }
+    },
+
+    "G": {
+        "name": "Statua di gesso",
+        "description": "una vecchia statua",
+        "color": "lightgrey",
+        "interactions": {
+            "no-item": {
+                "message": "sembra che abbia qualcosa in mano",
+                "transform": "M"
+            }
+        }
+    },
+    
+    "T": {
+        "name": "Tomba",
+        "description": "e' una tomba polverosa, con dei geroglifici scritti sopra",
+        "color": "red",
+        "dark_color": "green",
+        "interactions": {
+            "no-item": {
+                "other": "Sulla tomba trovi questa scritta : buio",
+                "message": "La tomba si sta aprendo da sola...",
+                "other": "Nella tomba trovi questa scritta : buio",
+                "game_over": "Dalla tomba esce una mummia che ti uccide"
+            }
+        }
+    },
+
+    
+
+    "V": {
+        "name": "Vaso",
+        "description": "che bel vaso",
+        "color": "lightgreen"
+    },
+
+    "F": {
+        "name": "Arrivo",
+        "description": "Ecco sei ritornato dai tuoi compagni!",
+        "color": "lightred",
+        "interactions": {
+          "no-item": {
+            "message":"Hai finalmente ritrovato la tua squadra! Adesso puoi uscire",
+            "win": "Sei riuscito a uscire sano e salvo da questa piramide infernale. Ottimo lavoro!"
+          }
+        }
     }
 }

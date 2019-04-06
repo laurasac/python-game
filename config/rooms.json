@@ -1,25 +1,33 @@
 {
     "0": {
         "name": "Corridoio",
-        "description":"Sei un esploratore e ti trovi all'interno di una delle piramidi piu' grandi d'Egitto. Mentre tu e la tua squadra proseguivate nei corridoi vieni colpito da un disegno antico sulla parete di un corridoio e ti stacchi dal gruppo. Ti avvicini e...all'improvviso cadi nel vuoto. BOOM! Ti ritrovi in un corridoio sconosciuto e ti accorgi di essere caduto in una trappola e di non poter tornare indietro.",
+        "description":"Sei un esploratore e ti trovi all'interno di una delle piramidi piu' grandi d'Egitto. Mentre tu e la tua squadra proseguivate nei corridoi vieni richiamato da un disegno antico sulla parete di un corridoio e ti stacchi dal gruppo. Ti avvicini e.... BOOM! Ti ritrovi in un corridoio sconosciuto e ti accorgi di essere caduto in una trappola e di non poter tornare indietro.",
         "color": "yellow"
     },
 
     "1": {
-        "name": "Stanza",
-        "description": "E' tutto molto disordinato. Sembra che nessuno abbia riordinato da molto tempo",
-        "color": "red"
+        "name": "Camera sepolcrale secondaria",
+        "description": "Qui si trova la tomba della moglie del faraone. E'disordinato come se qualcuno ci fosse stato recentemente",
+        "color": "yellow"
     },
     
     "2": {
-        "name": "Stanza",
-        "description": "sei evidentemente in un sogno",
-        "color": "black"
+        "name": "Corridoio nascosto",
+        "description": "Sei riuscito ad aprire la porta nascosta. Ora ti trovi in un corridoio",
+        "color": "yellow"
     },
+    
     "3": {
-        "name": "",
-        "description": "sei evidentemente in un sogno",
-        "color": "black"
+        "name": "Camera selpocrale del faraone",
+        "description": "Ti trovi nella tomba del faraone Sethenes, secondo alcuni la piu'antica dell'Egitto",
+        "color": "yellow"
+    },
+
+    "4": {
+        "name": "Sala ipostila'",
+        "description": "Questa e' l'entrata della piramide. Finalmente sei riuscito ad uscire!",
+        "color": "yellow"
     }
+
 
 }
