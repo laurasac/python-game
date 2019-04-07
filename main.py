@@ -185,9 +185,7 @@ class Player(Mobile):
                 print("\t- {} {}: {}".format(entity, entity.name, entity.description))
 
     def change_player_room(self, room):
-        # self.room.number
         self.room = room
-        # todo set player coords based on previous room
 
     def get_nearby_entities(self):
         nearby_entities = []
